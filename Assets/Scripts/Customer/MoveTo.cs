@@ -25,8 +25,8 @@ public class MoveTo : MonoBehaviour
         {
             Walk();
 
-            // check if agent has reached destination
-            Debug.Log("Reached destination, count = " + count);
+            //// check if agent has reached destination
+            //Debug.Log("Reached destination, count = " + count);
         }
 
     }

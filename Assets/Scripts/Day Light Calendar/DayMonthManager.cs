@@ -15,13 +15,13 @@ public class DayMonthManager : MonoBehaviour
     // farming manager reference
     public GameObject farmingManagerObject;
     private float previousTimeOfDay;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         lightingManager = FindObjectOfType<LightingManager>();
         Application.targetFrameRate = 60; // Set target frame rate to 60 FPS
         dateUI.GetComponent<TextMeshProUGUI>().text = "Day " + currentDay.ToString();
-
 
     }
 
@@ -49,6 +49,6 @@ public class DayMonthManager : MonoBehaviour
         // display new day on UI
         dateUI.GetComponent<TextMeshProUGUI>().text = "Day " + currentDay.ToString();
         // run the function OnNewDay() in farming manager
-        farmingManagerObject.GetComponent<FarmingManager>().OnNewDay();
+        farmingManagerObject.GetComponent<FarmingManager>().AdvanceGrowth();
     }
 }

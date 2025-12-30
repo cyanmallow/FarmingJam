@@ -15,3 +15,5 @@ MonoBehaviour:
   cropName: Lettuce
   cost: 10
   GrowthTime: 3
+  quantity: 10
+  price: 10

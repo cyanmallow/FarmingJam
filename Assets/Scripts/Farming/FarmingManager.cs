@@ -16,8 +16,7 @@ public class FarmingManager : MonoBehaviour
         {
             case CropState.NotPlanted:
                 Debug.Log("Crop is not planted. Planting crop...");
-                if (currentCropType != null)
-                    PlantCrop(currentCropType);
+                PlantCrop(currentCropType);
                 break;
 
             case CropState.Growing:
@@ -54,32 +53,50 @@ public class FarmingManager : MonoBehaviour
 
     public void PlantCrop(CropType cropType)
     {
-         Debug.Log("Planting " + cropType.ToString());
          state = CropState.Growing;
          // set current crop type
          currentCropType = cropType;
+         Debug.Log("Planting " + cropType.ToString());
+
 
         // minus crop cost from player inventory
         inventoryManager.DeductCoins();
     }
 
-    public void AdvanceGrowth(CropType currentCropType)
+    public void AdvanceGrowth()
     {
-        // countdown growth time by days
-        if (state == CropState.Growing)
-        {
-            growthProgress += 1f; // TODO: change to actual time passage
-            Debug.Log("Crop growing: " + growthProgress);
-            // once growth time = GrowthTime, change state to ReadyToHarvest
-            if (growthProgress >= currentCropType.GrowthTime) // TODO: change to cropType.GrowthTime
+        //// countdown growth time by days
+        //if (state == CropState.Growing)
+        //{
+        //    growthProgress += 1f; // TODO: change to +1 per day
+
+        //    Debug.Log("Crop growing: " + growthProgress);
+        //    // once growth time = GrowthTime, change state to ReadyToHarvest
+        //    if (growthProgress >= currentCropType.GrowthTime) // TODO: change to cropType.GrowthTime
+        //        state = CropState.ReadyToHarvest;
+        //}
+
+        if (state != CropState.Growing)
+            return;
+        //if (!isWatered)
+        //    return;
+
+        growthProgress++;
+
+        if (growthProgress >= 2)
+            //if (growthProgress >= currentCropType.GrowthTime)
+
+            {
                 state = CropState.ReadyToHarvest;
+            Debug.Log("Crop is ready to harvest!");
         }
+        //isWatered = false; // reset watered status for next day
     }
 
-    private void FixedUpdate()
-    {
-        AdvanceGrowth(currentCropType);
-    }
+    //private void FixedUpdate()
+    //{
+    //    AdvanceGrowth(currentCropType);
+    //}
 
 
     public void WaterCrop()
@@ -94,7 +111,9 @@ public class FarmingManager : MonoBehaviour
     {
         inventoryManager.AddCrop(cropType);
         state = CropState.NotPlanted;
-        currentCropType = null;
+
+        // TODO: change this to an UI to choose crop type to plant next
+        //currentCropType = null;
         isWatered = false;
         growthProgress = 0f;
         Debug.Log("Crop harvested.");
@@ -106,24 +125,6 @@ public class FarmingManager : MonoBehaviour
         Debug.Log($"Put something on shelf...");
     }
 
-
-    // on new day add growth to crops
-    public void OnNewDay()
-    {
-        if (state != CropState.Growing)
-            return;
-        if (!isWatered)
-            return;
-
-        growthProgress++;
-
-        if (growthProgress >= currentCropType.GrowthTime)
-        {
-            state = CropState.ReadyToHarvest;
-            Debug.Log("Crop is ready to harvest!");
-        }
-        isWatered = false; // reset watered status for next day
-    }
 
     // update visuals based on state
 
