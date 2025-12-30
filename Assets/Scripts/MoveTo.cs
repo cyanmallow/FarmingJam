@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class MoveTo : MonoBehaviour
 {
     
-    private int count = 0;
+    private int count;
     private NavMeshAgent agent;
 
     public Transform entrance;
@@ -15,7 +15,8 @@ public class MoveTo : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>(); 
+        agent = GetComponent<NavMeshAgent>();
+        count = 0;
     }
 
     private void Update()
@@ -23,32 +24,43 @@ public class MoveTo : MonoBehaviour
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             Walk();
+
+            // check if agent has reached destination
+            Debug.Log("Reached destination, count = " + count);
         }
-            
+
     }
     private void Walk()
     {
-        count++;
+        if (agent.pathPending) {
+            return;
+        }
 
-        if (count == 1)
-        {
-            agent.destination = entrance.position;
+        if (agent.remainingDistance > agent.stoppingDistance) {
+            return;
         }
-        if (count == 2)
+
+        switch (count)
         {
-            agent.destination = shelf.position;
-        }
-        if (count == 3)
-        {
-            agent.destination = checkout.position;
-        }
-        if (count == 4)
-        {
-            agent.destination = entrance.position;
-        }
-        if (count == 5)
-        {
-            agent.destination = leave.position;
+            case 0:
+                agent.destination = entrance.position;
+                count++;
+                break;
+            case 1:
+                agent.destination = shelf.position;
+                count++;
+                break;
+            case 2:
+                agent.destination = checkout.position;
+                count++;
+                break;
+            case 3:
+                agent.destination = entrance.position;
+                count++;
+                break;
+            case 4:
+                agent.destination = leave.position;
+                break;
         }
     }
 }

@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     private Vector2 moveInput;
     public NPCInteractable currentNPC;
+    private FarmingManager currentFarmingTile;
 
     public Transform visualRoot;
     public float visualScale = 0.3f;
@@ -41,5 +42,31 @@ public class PlayerMovement : MonoBehaviour
         {
             currentNPC.Interact();
         }
+
+        // if next to a farming tile
+        if (currentFarmingTile != null)
+        {
+            currentFarmingTile.Interact();
+        }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Farming tile
+        if (other.TryGetComponent(out FarmingManager tile))
+        {
+            currentFarmingTile = tile;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Farming tile
+        if (other.TryGetComponent(out FarmingManager tile))
+        {
+            if (currentFarmingTile == tile)
+                currentFarmingTile = null;
+        }
+    }
+
 }
