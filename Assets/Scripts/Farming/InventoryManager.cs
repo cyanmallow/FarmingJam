@@ -45,10 +45,21 @@ public class InventoryManager : MonoBehaviour
         Debug.Log($"Deducted {farmingManager.currentCropType.cost} coins. Remaining coins: {coin}");
     } 
 
+    public InventorySlot GetInventorySlot(CropType cropType)
+    {
+        if (cropType == null)
+        {
+            Debug.Log("GetInventorySlot called with NULL cropType!");
+            return null;
+        }
+        return inventory.Find(s => s.cropType == cropType);
+    }
+
     // add item
     public void AddCrop()
     {
-        InventorySlot slot = inventory.Find(s => s.cropType == farmingManager.currentCropType);
+        //InventorySlot slot = inventory.Find(s => s.cropType == farmingManager.currentCropType);
+        InventorySlot slot = GetInventorySlot(farmingManager.currentCropType);
         if (farmingManager.currentCropType == null)
         {
             Debug.LogError("AddCrop called with NULL cropType!");

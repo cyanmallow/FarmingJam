@@ -16,16 +16,20 @@ public class FarmingManager : MonoBehaviour
     [SerializeField] private GameObject GrowingPlot;
     [SerializeField] private GameObject ReadyToHarvestPlot;
 
-
-    // inventory slot reference
-    public List<InventorySlot> inventory = new List<InventorySlot>();
+    public CropProgress cropProgress;
 
     // choose crop to plant
-    //[SerializeField] private GameObject cropSelectionUI;
+    public GameObject cropSelectionUI;
 
     public void Start()
     {
         ChangeVisual();
+        cropProgress = FindObjectOfType<CropProgress>();
+
+        if (cropProgress == null)
+        {
+            Debug.Log("InventoryManager could not find cropProgress!");
+        }
     }
     public void Interact()
     {
@@ -68,7 +72,7 @@ public class FarmingManager : MonoBehaviour
     public void PlantCrop(CropType cropType)
     {
         //// choose crop to plant
-        //cropSelectionUI.SetActive(true);
+        cropSelectionUI.SetActive(true);
         //cropSelectionUI.SetActive(false);
 
         state = CropState.Growing;
@@ -112,13 +116,13 @@ public class FarmingManager : MonoBehaviour
     public void HarvestCrop(CropType cropType)
     {
         // level up a crop, change this to update exp later
-        LevelUpCrop();
+        inventoryManager.AddCrop();
+        cropProgress.LevelUpCrop();
         state = CropState.NotPlanted;
         isWatered = false;
         growthProgress = 0f;
         Debug.Log("Crop harvested.");
         ChangeVisual();
-        inventoryManager.AddCrop();
 
     }
 
@@ -136,22 +140,5 @@ public class FarmingManager : MonoBehaviour
         GrowingPlot.SetActive(state == CropState.Growing);
         ReadyToHarvestPlot.SetActive(state == CropState.ReadyToHarvest);
     }
-    public void LevelUpCrop()
-    {
-        InventorySlot slot = inventory.Find(s => s.cropType == currentCropType);
-        if (currentCropType == null)
-        {
-            Debug.LogError("AddCrop called with NULL cropType!");
-            return;
-        }
-        if (slot != null)
-        {
-            slot.currentLevel += 1;
-            Debug.Log("Crop at level " + slot.currentLevel);
-        }
-        else
-        {
-            Debug.Log("Leveled up a crop that does not exist in the inventory, how does that even work");
-        }
-    }
+
 }
