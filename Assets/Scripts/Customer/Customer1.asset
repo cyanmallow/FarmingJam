@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e965afebb70a834daa158c7dd2b127a, type: 3}
-  m_Name: Lettuce
-  m_EditorClassIdentifier: Assembly-CSharp::CropType
-  cropName: Lettuce
-  cost: 10
-  GrowthTime: 2
-  price: 10
-  amountGainedPerHarvested: 10
+  m_Script: {fileID: 11500000, guid: 6722c871cb1ff93409e50c338292b290, type: 3}
+  m_Name: Customer1
+  m_EditorClassIdentifier: Assembly-CSharp::Customer
+  customerName: Customer1
+  budget: 10
+  favouriteItem: {fileID: 0}
+  trust: 0

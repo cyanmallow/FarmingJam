@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -11,10 +13,17 @@ public class InventoryManager : MonoBehaviour
     public Transform coinUI;
     private FarmingManager farmingManager;
 
+    // inventory list
+    public List<InventorySlot> inventory = new List<InventorySlot>();
     private void Start()
     {
         UpdateCoinUI();
         farmingManager = FindObjectOfType<FarmingManager>();
+
+        if (farmingManager == null)
+        {
+            Debug.Log("InventoryManager could not find FarmingManager!");
+        }
     }
 
     private void UpdateCoinUI()
@@ -25,7 +34,6 @@ public class InventoryManager : MonoBehaviour
     // Method to deduct coins when planting a crop
     public void DeductCoins()
     {
-        // fix: currentCropType is null reference
         if (farmingManager.currentCropType == null)
         {
             Debug.LogError("CurrentCropType is not set. Cannot deduct coins.");
@@ -36,9 +44,33 @@ public class InventoryManager : MonoBehaviour
         UpdateCoinUI();
         Debug.Log($"Deducted {farmingManager.currentCropType.cost} coins. Remaining coins: {coin}");
     } 
-    public void AddCrop(CropType currentCropType)
+
+    // add item
+    public void AddCrop()
     {
-        cropQuantity += 1;
-        Debug.Log($"Added 1 crop. Total crops: {cropQuantity}");
+        InventorySlot slot = inventory.Find(s => s.cropType == farmingManager.currentCropType);
+        if (farmingManager.currentCropType == null)
+        {
+            Debug.LogError("AddCrop called with NULL cropType!");
+            return;
+        }
+
+        if (slot != null)
+        {
+            slot.totalQuantity += farmingManager.currentCropType.amountGainedPerHarvested;
+            Debug.Log($"To an existing cropType in inventory, added {farmingManager.currentCropType.amountGainedPerHarvested} of {farmingManager.currentCropType.name}.");
+            // now inventory has xx items
+            Debug.Log($"Inventory has " + slot.totalQuantity + " " + farmingManager.currentCropType.cropName);
+        }
+        else
+        {
+            inventory.Add(new InventorySlot(farmingManager.currentCropType, farmingManager.currentCropType.amountGainedPerHarvested));
+            Debug.Log($"Created new cropType in inventory and added {farmingManager.currentCropType.amountGainedPerHarvested} of {farmingManager.currentCropType.name}.");
+            // now inventory has xx items
+            Debug.Log($"Inventory has " + farmingManager.currentCropType.amountGainedPerHarvested + " " + farmingManager.currentCropType.cropName);
+        }
     }
+
+    // TODO: remove item
+
 }

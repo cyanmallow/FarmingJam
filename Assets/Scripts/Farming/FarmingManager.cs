@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum CropState { NotPlanted, Growing, ReadyToHarvest }
@@ -10,6 +11,22 @@ public class FarmingManager : MonoBehaviour
 
     [SerializeField] private InventoryManager inventoryManager;
 
+    // different game objects for different crop states
+    [SerializeField] private GameObject NotPlantedPlot;
+    [SerializeField] private GameObject GrowingPlot;
+    [SerializeField] private GameObject ReadyToHarvestPlot;
+
+
+    // inventory slot reference
+    public List<InventorySlot> inventory = new List<InventorySlot>();
+
+    // choose crop to plant
+    //[SerializeField] private GameObject cropSelectionUI;
+
+    public void Start()
+    {
+        ChangeVisual();
+    }
     public void Interact()
     {
         switch (state)
@@ -37,8 +54,6 @@ public class FarmingManager : MonoBehaviour
         {
             // show UI prompt to interact
             Debug.Log("Player entered farm area. You can interact with the farm.");
-
-
         }
     }
 
@@ -50,14 +65,17 @@ public class FarmingManager : MonoBehaviour
         }
     }
 
-
     public void PlantCrop(CropType cropType)
     {
-         state = CropState.Growing;
-         // set current crop type
-         currentCropType = cropType;
-         Debug.Log("Planting " + cropType.ToString());
+        //// choose crop to plant
+        //cropSelectionUI.SetActive(true);
+        //cropSelectionUI.SetActive(false);
 
+        state = CropState.Growing;
+        // set current crop type
+        currentCropType = cropType;
+        Debug.Log("Planting " + cropType.ToString());
+        ChangeVisual();
 
         // minus crop cost from player inventory
         inventoryManager.DeductCoins();
@@ -65,39 +83,23 @@ public class FarmingManager : MonoBehaviour
 
     public void AdvanceGrowth()
     {
-        //// countdown growth time by days
-        //if (state == CropState.Growing)
-        //{
-        //    growthProgress += 1f; // TODO: change to +1 per day
-
-        //    Debug.Log("Crop growing: " + growthProgress);
-        //    // once growth time = GrowthTime, change state to ReadyToHarvest
-        //    if (growthProgress >= currentCropType.GrowthTime) // TODO: change to cropType.GrowthTime
-        //        state = CropState.ReadyToHarvest;
-        //}
-
         if (state != CropState.Growing)
             return;
-        //if (!isWatered)
-        //    return;
+        if (!isWatered)
+            return;
 
         growthProgress++;
 
         if (growthProgress >= 2)
-            //if (growthProgress >= currentCropType.GrowthTime)
-
-            {
-                state = CropState.ReadyToHarvest;
+        //if (growthProgress >= currentCropType.GrowthTime)
+        {
+            state = CropState.ReadyToHarvest;
             Debug.Log("Crop is ready to harvest!");
+            ChangeVisual();
+
         }
-        //isWatered = false; // reset watered status for next day
+        isWatered = false; // reset watered status for next day
     }
-
-    //private void FixedUpdate()
-    //{
-    //    AdvanceGrowth(currentCropType);
-    //}
-
 
     public void WaterCrop()
     {
@@ -109,14 +111,15 @@ public class FarmingManager : MonoBehaviour
 
     public void HarvestCrop(CropType cropType)
     {
-        inventoryManager.AddCrop(cropType);
+        // level up a crop, change this to update exp later
+        LevelUpCrop();
         state = CropState.NotPlanted;
-
-        // TODO: change this to an UI to choose crop type to plant next
-        //currentCropType = null;
         isWatered = false;
         growthProgress = 0f;
         Debug.Log("Crop harvested.");
+        ChangeVisual();
+        inventoryManager.AddCrop();
+
     }
 
 
@@ -127,5 +130,28 @@ public class FarmingManager : MonoBehaviour
 
 
     // update visuals based on state
-
+    private void ChangeVisual()
+    {
+        NotPlantedPlot.SetActive(state == CropState.NotPlanted);
+        GrowingPlot.SetActive(state == CropState.Growing);
+        ReadyToHarvestPlot.SetActive(state == CropState.ReadyToHarvest);
+    }
+    public void LevelUpCrop()
+    {
+        InventorySlot slot = inventory.Find(s => s.cropType == currentCropType);
+        if (currentCropType == null)
+        {
+            Debug.LogError("AddCrop called with NULL cropType!");
+            return;
+        }
+        if (slot != null)
+        {
+            slot.currentLevel += 1;
+            Debug.Log("Crop at level " + slot.currentLevel);
+        }
+        else
+        {
+            Debug.Log("Leveled up a crop that does not exist in the inventory, how does that even work");
+        }
+    }
 }

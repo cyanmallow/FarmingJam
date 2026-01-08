@@ -6,8 +6,10 @@ public class CropType : ScriptableObject
     public string cropName;
     public int cost;
     public float GrowthTime; // in days
-    public int quantity;
+    //public int quantity;
     public int price;
 
-
+    //public CropType harvestCropType;
+    public int amountGainedPerHarvested;
+    
 }
