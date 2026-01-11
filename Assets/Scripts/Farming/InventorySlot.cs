@@ -10,7 +10,6 @@ public class InventorySlot
 
     //below are accessed by farming manager
     public int currentLevel;
-    public float expNeeded;
 
     public InventorySlot(CropType cropType, int quantity)
     {

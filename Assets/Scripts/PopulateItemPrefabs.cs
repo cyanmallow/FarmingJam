@@ -23,14 +23,14 @@ public class PopulateItemPrefabs : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        // Create new items
-        for (int i = 0; i < items.Count; i++)
-        {
-            GameObject buttonGO = Instantiate(buttonPrefab, contentParent);
+        //// Create new items
+        //for (int i = 0; i < items.Count; i++)
+        //{
+        //    GameObject buttonGO = Instantiate(buttonPrefab, contentParent);
 
-            UIItemButton itemButton = buttonGO.GetComponent<UIItemButton>();
-            itemButton.Setup(items[i], i);
-        }
+        //    UIItemButton itemButton = buttonGO.GetComponent<UIItemButton>();
+        //    itemButton.Setup(items[i], i);
+        //}
     }
 }
 

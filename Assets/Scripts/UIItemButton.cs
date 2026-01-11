@@ -1,31 +1,38 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIItemButton : MonoBehaviour
 {
-    public TMP_Text label;          
+
+    public TMP_Text itemLevelText;
+    public GameObject lockIcon;
+
     private int itemIndex;
-    CropType cropType;
 
-    public FarmingManager farmingManager;
+    public List<InventorySlot> inventory = new List<InventorySlot>();
+    public InventoryManager inventoryManager;
 
-    void Awake()
+    void Start()
     {
-        if (label == null)
-            label = GetComponentInChildren<TMP_Text>();
-    }
-    public void Setup(CropType cropType, int index)
-    {
-        label.text = cropType.cropName;
-        itemIndex = index;
+        inventoryManager = FindObjectOfType<InventoryManager>();
+        if (inventoryManager == null)
+        {
+            Debug.Log("CropProgress could not find InventoryManager!");
+        }
     }
 
     // on click, run farmingManager.PlantCrop with the selected crop type
-    public void OnClick()
+    public void OnClick(CropType cropType)
     {
+        FarmingManager farmingManager = CropSelectionUI.Instance.activeFarmingManager;
+
+        if (farmingManager == null)
+        {
+            Debug.Log("No active FarmingManager");
+        }
         farmingManager.PlantCrop(cropType);
-        // hide crop selection UI
         farmingManager.cropSelectionUI.SetActive(false);
     }
 

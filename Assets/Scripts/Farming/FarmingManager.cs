@@ -36,8 +36,7 @@ public class FarmingManager : MonoBehaviour
         switch (state)
         {
             case CropState.NotPlanted:
-                Debug.Log("Crop is not planted. Planting crop...");
-                PlantCrop(currentCropType);
+                ChooseCrop();
                 break;
 
             case CropState.Growing:
@@ -52,31 +51,20 @@ public class FarmingManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ChooseCrop()
     {
-        if (other.CompareTag("Farm"))
-        {
-            // show UI prompt to interact
-            Debug.Log("Player entered farm area. You can interact with the farm.");
-        }
-    }
+        cropSelectionUI.SetActive(true);
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Farm"))
-        {
-            Debug.Log("Player exited farm area.");
-        }
+        CropSelectionUI.Instance.activeFarmingManager = this;
+        Debug.Log("CropSelectionUI.Instance = " + CropSelectionUI.Instance);
+
     }
 
     public void PlantCrop(CropType cropType)
     {
-        //// choose crop to plant
-        cropSelectionUI.SetActive(true);
-        //cropSelectionUI.SetActive(false);
+        cropSelectionUI.SetActive(false);
 
         state = CropState.Growing;
-        // set current crop type
         currentCropType = cropType;
         Debug.Log("Planting " + cropType.ToString());
         ChangeVisual();
@@ -117,7 +105,7 @@ public class FarmingManager : MonoBehaviour
     {
         // level up a crop, change this to update exp later
         inventoryManager.AddCrop();
-        cropProgress.LevelUpCrop();
+        cropProgress.LevelUpCrop(this);
         state = CropState.NotPlanted;
         isWatered = false;
         growthProgress = 0f;

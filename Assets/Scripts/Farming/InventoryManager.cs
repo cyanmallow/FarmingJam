@@ -11,19 +11,12 @@ public class InventoryManager : MonoBehaviour
 
     //display coin on UI
     public Transform coinUI;
-    private FarmingManager farmingManager;
 
     // inventory list
     public List<InventorySlot> inventory = new List<InventorySlot>();
     private void Start()
     {
         UpdateCoinUI();
-        farmingManager = FindObjectOfType<FarmingManager>();
-
-        if (farmingManager == null)
-        {
-            Debug.Log("InventoryManager could not find FarmingManager!");
-        }
     }
 
     private void UpdateCoinUI()
@@ -34,13 +27,21 @@ public class InventoryManager : MonoBehaviour
     // Method to deduct coins when planting a crop
     public void DeductCoins()
     {
-        if (farmingManager.currentCropType == null)
+        FarmingManager farmingManager = CropSelectionUI.Instance.activeFarmingManager;
+
+        if (farmingManager == null)
+        {
+            Debug.Log("No active FarmingManager");
+        }
+
+        CropType currentCropType = farmingManager.currentCropType;
+        if (currentCropType == null)
         {
             Debug.LogError("CurrentCropType is not set. Cannot deduct coins.");
             return;
         }
 
-        coin -= farmingManager.currentCropType.cost;
+        coin -= currentCropType.cost;
         UpdateCoinUI();
         Debug.Log($"Deducted {farmingManager.currentCropType.cost} coins. Remaining coins: {coin}");
     } 
@@ -58,6 +59,13 @@ public class InventoryManager : MonoBehaviour
     // add item
     public void AddCrop()
     {
+        FarmingManager farmingManager = CropSelectionUI.Instance.activeFarmingManager;
+
+        if (farmingManager == null)
+        {
+            Debug.Log("No active FarmingManager");
+        }
+
         //InventorySlot slot = inventory.Find(s => s.cropType == farmingManager.currentCropType);
         InventorySlot slot = GetInventorySlot(farmingManager.currentCropType);
         if (farmingManager.currentCropType == null)
