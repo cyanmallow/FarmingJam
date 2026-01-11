@@ -26,14 +26,8 @@ public class UIItemButton : MonoBehaviour
     // on click, run farmingManager.PlantCrop with the selected crop type
     public void OnClick(CropType cropType)
     {
-        FarmingManager farmingManager = CropSelectionUI.Instance.activeFarmingManager;
-
-        if (farmingManager == null)
-        {
-            Debug.Log("No active FarmingManager");
-        }
-        farmingManager.PlantCrop(cropType);
-        farmingManager.cropSelectionUI.SetActive(false);
+        CropSelectionUI.Instance.activeFarmingManager.PlantCrop(cropType);
+        CropSelectionUI.Instance.activeFarmingManager.cropSelectionUI.SetActive(false);
     }
 
 }

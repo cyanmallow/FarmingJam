@@ -27,7 +27,7 @@ public class CropProgress : MonoBehaviour
     {
         if (farmingManager.currentCropType == null)
         {
-            Debug.Log("AddCrop called with NULL cropType!");
+            Debug.Log("LevelUpCrop called with NULL cropType!");
             return;
         }
 

@@ -46,7 +46,7 @@ public class FarmingManager : MonoBehaviour
 
             case CropState.ReadyToHarvest:
                 Debug.Log("Crop is ready to harvest. Harvesting crop...");
-                HarvestCrop(currentCropType);
+                HarvestCrop();
                 break;
         }
     }
@@ -62,7 +62,7 @@ public class FarmingManager : MonoBehaviour
 
     public void PlantCrop(CropType cropType)
     {
-        cropSelectionUI.SetActive(false);
+        //cropSelectionUI.SetActive(false);
 
         state = CropState.Growing;
         currentCropType = cropType;
@@ -82,8 +82,8 @@ public class FarmingManager : MonoBehaviour
 
         growthProgress++;
 
-        if (growthProgress >= 2)
-        //if (growthProgress >= currentCropType.GrowthTime)
+        //if (growthProgress >= 2)
+        if (growthProgress >= currentCropType.GrowthTime)
         {
             state = CropState.ReadyToHarvest;
             Debug.Log("Crop is ready to harvest!");
@@ -101,17 +101,23 @@ public class FarmingManager : MonoBehaviour
         Debug.Log("Crop watered.");
     }
 
-    public void HarvestCrop(CropType cropType)
+    public void HarvestCrop()
     {
-        // level up a crop, change this to update exp later
-        inventoryManager.AddCrop();
+        if (currentCropType == null)
+        {
+            return;
+        }
+        inventoryManager.AddCrop(currentCropType);
+
         cropProgress.LevelUpCrop(this);
-        state = CropState.NotPlanted;
         isWatered = false;
         growthProgress = 0f;
         Debug.Log("Crop harvested.");
-        ChangeVisual();
 
+        currentCropType = null;
+        state = CropState.NotPlanted;
+
+        ChangeVisual();
     }
 
 

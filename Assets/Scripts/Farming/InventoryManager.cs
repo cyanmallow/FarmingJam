@@ -57,18 +57,11 @@ public class InventoryManager : MonoBehaviour
     }
 
     // add item
-    public void AddCrop()
+    public void AddCrop(CropType cropType)
     {
-        FarmingManager farmingManager = CropSelectionUI.Instance.activeFarmingManager;
-
-        if (farmingManager == null)
-        {
-            Debug.Log("No active FarmingManager");
-        }
-
         //InventorySlot slot = inventory.Find(s => s.cropType == farmingManager.currentCropType);
-        InventorySlot slot = GetInventorySlot(farmingManager.currentCropType);
-        if (farmingManager.currentCropType == null)
+        InventorySlot slot = GetInventorySlot(cropType);
+        if (cropType == null)
         {
             Debug.LogError("AddCrop called with NULL cropType!");
             return;
@@ -76,17 +69,17 @@ public class InventoryManager : MonoBehaviour
 
         if (slot != null)
         {
-            slot.totalQuantity += farmingManager.currentCropType.amountGainedPerHarvested;
-            Debug.Log($"To an existing cropType in inventory, added {farmingManager.currentCropType.amountGainedPerHarvested} of {farmingManager.currentCropType.name}.");
+            slot.totalQuantity += cropType.amountGainedPerHarvested;
+            Debug.Log($"To an existing cropType in inventory, added {cropType.amountGainedPerHarvested} of {cropType.name}.");
             // now inventory has xx items
-            Debug.Log($"Inventory has " + slot.totalQuantity + " " + farmingManager.currentCropType.cropName);
+            Debug.Log($"Inventory has " + slot.totalQuantity + " " + cropType.cropName);
         }
         else
         {
-            inventory.Add(new InventorySlot(farmingManager.currentCropType, farmingManager.currentCropType.amountGainedPerHarvested));
-            Debug.Log($"Created new cropType in inventory and added {farmingManager.currentCropType.amountGainedPerHarvested} of {farmingManager.currentCropType.name}.");
+            inventory.Add(new InventorySlot(cropType, cropType.amountGainedPerHarvested));
+            Debug.Log($"Created new cropType in inventory and added {cropType.amountGainedPerHarvested} of {cropType.name}.");
             // now inventory has xx items
-            Debug.Log($"Inventory has " + farmingManager.currentCropType.amountGainedPerHarvested + " " + farmingManager.currentCropType.cropName);
+            Debug.Log($"Inventory has " + cropType.amountGainedPerHarvested + " " + cropType.cropName);
         }
     }
 
