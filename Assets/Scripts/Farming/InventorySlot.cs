@@ -9,7 +9,7 @@ public class InventorySlot
     public int totalQuantity;
 
     //below are accessed by farming manager
-    public int currentLevel;
+    public int currentLevel = 1;
 
     public InventorySlot(CropType cropType, int quantity)
     {

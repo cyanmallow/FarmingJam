@@ -82,15 +82,13 @@ public class FarmingManager : MonoBehaviour
 
         growthProgress++;
 
-        //if (growthProgress >= 2)
         if (growthProgress >= currentCropType.GrowthTime)
         {
             state = CropState.ReadyToHarvest;
             Debug.Log("Crop is ready to harvest!");
             ChangeVisual();
-
         }
-        isWatered = false; // reset watered status for next day
+        isWatered = false;
     }
 
     public void WaterCrop()
@@ -120,13 +118,6 @@ public class FarmingManager : MonoBehaviour
         ChangeVisual();
     }
 
-
-    public void PutOnShelf(CropType cropType)
-    {
-        Debug.Log($"Put something on shelf...");
-    }
-
-
     // update visuals based on state
     private void ChangeVisual()
     {
@@ -134,5 +125,4 @@ public class FarmingManager : MonoBehaviour
         GrowingPlot.SetActive(state == CropState.Growing);
         ReadyToHarvestPlot.SetActive(state == CropState.ReadyToHarvest);
     }
-
 }
