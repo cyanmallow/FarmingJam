@@ -27,10 +27,6 @@ public class DayMonthManager : MonoBehaviour
         lightingManager = FindObjectOfType<LightingManager>();
         Application.targetFrameRate = 60; // Set target frame rate to 60 FPS
         dateUI.GetComponent<TextMeshProUGUI>().text = "Day " + currentDay.ToString();
-
-        ////test shit
-        //Time.timeScale = 1f;
-        //Debug.Log(Time.timeScale);
     }
 
     // Update is called once per frame

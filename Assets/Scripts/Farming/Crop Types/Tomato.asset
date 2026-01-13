@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e965afebb70a834daa158c7dd2b127a, type: 3}
-  m_Name: Lettuce
+  m_Name: Tomato
   m_EditorClassIdentifier: Assembly-CSharp::CropType
-  cropName: Lettuce
+  cropName: Tomato
   cost: 10
-  GrowthTime: 2
-  price: 10
-  amountGainedPerHarvested: 10
+  GrowthTime: 5
+  price: 3
+  amountGainedPerHarvested: 6

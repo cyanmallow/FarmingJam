@@ -14,9 +14,20 @@ public class InventoryManager : MonoBehaviour
 
     // inventory list
     public List<InventorySlot> inventory = new List<InventorySlot>();
-    private void Start()
+
+    public List<CropType> CropDatabase;
+
+
+    private void Awake()
     {
         UpdateCoinUI();
+        // create inventoryslot for each crop type
+        foreach (CropType cropType in CropDatabase)
+        {
+            inventory.Add(new InventorySlot(cropType, 0));
+            Debug.Log($"Created new cropType in inventory and added 0 of {cropType.name}.");
+
+        }
     }
 
     private void UpdateCoinUI()
@@ -59,7 +70,6 @@ public class InventoryManager : MonoBehaviour
     // add item
     public void AddCrop(CropType cropType)
     {
-        //InventorySlot slot = inventory.Find(s => s.cropType == farmingManager.currentCropType);
         InventorySlot slot = GetInventorySlot(cropType);
         if (cropType == null)
         {
@@ -71,14 +81,12 @@ public class InventoryManager : MonoBehaviour
         {
             slot.totalQuantity += cropType.amountGainedPerHarvested;
             Debug.Log($"To an existing cropType in inventory, added {cropType.amountGainedPerHarvested} of {cropType.name}.");
-            // now inventory has xx items
             Debug.Log($"Inventory has " + slot.totalQuantity + " " + cropType.cropName);
         }
         else
         {
             inventory.Add(new InventorySlot(cropType, cropType.amountGainedPerHarvested));
             Debug.Log($"Created new cropType in inventory and added {cropType.amountGainedPerHarvested} of {cropType.name}.");
-            // now inventory has xx items
             Debug.Log($"Inventory has " + cropType.amountGainedPerHarvested + " " + cropType.cropName);
         }
     }

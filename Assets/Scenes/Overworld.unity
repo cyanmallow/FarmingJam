@@ -539,6 +539,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1c5da6a2d55c8124c8fd658e90b13436, type: 3}
   m_PrefabInstance: {fileID: 611727049}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &146000356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6326131799040771274, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+  m_PrefabInstance: {fileID: 1590506190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &152065086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 253145165130671483, guid: 92fbce73a0b1bde45855fda9bb52211e, type: 3}
@@ -735,6 +740,12 @@ MonoBehaviour:
   NotPlantedPlot: {fileID: 395664873}
   GrowingPlot: {fileID: 1293527515}
   ReadyToHarvestPlot: {fileID: 923017191}
+  SeedPlot: {fileID: 0}
+  GrassHarvestPlot: {fileID: 0}
+  LettuceGrowingPlot: {fileID: 0}
+  LettuceHarvestPlot: {fileID: 0}
+  TomatoGrowingPlot: {fileID: 0}
+  TomatoHarvestPlot: {fileID: 0}
   cropProgress: {fileID: 1559626010}
   cropSelectionUI: {fileID: 360340877}
 --- !u!1 &320898634
@@ -1878,6 +1889,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3429673360921180058, guid: f6e9555f520b30b4687229e67d952638, type: 3}
   m_PrefabInstance: {fileID: 1762222962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &519419698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6326131799040771274, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+  m_PrefabInstance: {fileID: 1702892581}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &538010792 stripped
 MonoBehaviour:
@@ -3333,6 +3349,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990056285}
   m_CullTransparentMesh: 1
+--- !u!1001 &990388585
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 94.93
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 94.93
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 94.93
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 66.83998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 60.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
+      propertyPath: m_Name
+      value: grass
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38d5e3e77daaab345b02dd429d313634, type: 3}
 --- !u!1 &1003900063 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 973753820874962179, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
@@ -5606,9 +5695,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CropProgress
   inventory: []
   inventoryManager: {fileID: 1978410592}
+  uiItemButton: {fileID: 1956220463}
   grass: {fileID: 11400000, guid: 24890952b7e291a4983354baceda568e, type: 2}
   lettuce: {fileID: 11400000, guid: 2f8e450468a4e404d8bd34a36949f78c, type: 2}
   tomato: {fileID: 11400000, guid: 998d87e4ac5c5ac4dbbf14c2a767fc7b, type: 2}
+  spinach: {fileID: 11400000, guid: db32af4d68f8a9f4b8bccab2049c6b1d, type: 2}
+  cabbage: {fileID: 11400000, guid: 6b1850fbc2b3866449ab9b7db2d09062, type: 2}
+  pepper: {fileID: 0}
+  eggplant: {fileID: 11400000, guid: 732be4b4f8a971444b21c95a6fd56c65, type: 2}
 --- !u!4 &1559626011
 Transform:
   m_ObjectHideFlags: 0
@@ -5822,7 +5916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2229590497425195059, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
       propertyPath: m_text
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2563114354601062842, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5909,6 +6003,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1548876071}
     - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: levelTextGO
+      value: 
+      objectReference: {fileID: 146000356}
+    - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: cropProgress
+      value: 
+      objectReference: {fileID: 1559626010}
+    - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
       propertyPath: itemCostText
       value: 
       objectReference: {fileID: 1590506192}
@@ -5954,7 +6056,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8050873089937209650, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
   m_PrefabInstance: {fileID: 1590506190}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 146000356}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -6625,6 +6727,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1718132183670906198, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: db32af4d68f8a9f4b8bccab2049c6b1d, type: 2}
+    - target: {fileID: 2229590497425195059, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: m_text
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2563114354601062842, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
       propertyPath: m_SizeDelta.x
       value: -78.570015
@@ -6656,6 +6766,10 @@ PrefabInstance:
     - target: {fileID: 3115189159117811593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -17.297497
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725040075208628571, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: m_text
+      value: Spinach
       objectReference: {fileID: 0}
     - target: {fileID: 4870055490186621955, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6699,8 +6813,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8703337104610724036, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
       propertyPath: m_Name
-      value: Item (3)
+      value: Spinach
       objectReference: {fileID: 0}
+    - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: levelTextGO
+      value: 
+      objectReference: {fileID: 519419698}
+    - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: cropProgress
+      value: 
+      objectReference: {fileID: 1559626010}
     - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
       propertyPath: itemCostText
       value: 
@@ -6713,6 +6835,14 @@ PrefabInstance:
       propertyPath: farmingManager
       value: 
       objectReference: {fileID: 4399558392559935079}
+    - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: inventoryManager
+      value: 
+      objectReference: {fileID: 1978410592}
+    - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: thisButtonCropType
+      value: 
+      objectReference: {fileID: 11400000, guid: db32af4d68f8a9f4b8bccab2049c6b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6739,7 +6869,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8050873089937209650, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
   m_PrefabInstance: {fileID: 1702892581}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 519419698}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -7372,6 +7502,12 @@ MonoBehaviour:
   NotPlantedPlot: {fileID: 1410680093}
   GrowingPlot: {fileID: 412439371}
   ReadyToHarvestPlot: {fileID: 2026794420}
+  SeedPlot: {fileID: 0}
+  GrassHarvestPlot: {fileID: 0}
+  LettuceGrowingPlot: {fileID: 0}
+  LettuceHarvestPlot: {fileID: 0}
+  TomatoGrowingPlot: {fileID: 0}
+  TomatoHarvestPlot: {fileID: 0}
   cropProgress: {fileID: 1559626010}
   cropSelectionUI: {fileID: 360340877}
 --- !u!1 &1814577124
@@ -7463,6 +7599,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814577124}
   m_Mesh: {fileID: -3758573805739257388, guid: 1c5da6a2d55c8124c8fd658e90b13436, type: 3}
+--- !u!1 &1832806427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6326131799040771274, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+  m_PrefabInstance: {fileID: 2112906581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1873411664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8279,6 +8420,14 @@ PrefabInstance:
       value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: levelTextGO
+      value: 
+      objectReference: {fileID: 2079911531}
+    - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: cropProgress
+      value: 
+      objectReference: {fileID: 1559626010}
+    - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
       propertyPath: inventoryManager
       value: 
       objectReference: {fileID: 1978410592}
@@ -8296,6 +8445,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 938821752410683055, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
   m_PrefabInstance: {fileID: 1956220461}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1956220463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+  m_PrefabInstance: {fileID: 1956220461}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688b92c56033c0e4aaeacbe6bb2d6380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIItemButton
 --- !u!1 &1976118044
 GameObject:
   m_ObjectHideFlags: 0
@@ -8375,6 +8535,11 @@ MonoBehaviour:
   cropQuantity: 0
   coinUI: {fileID: 990056286}
   inventory: []
+  CropDatabase:
+  - {fileID: 11400000, guid: 24890952b7e291a4983354baceda568e, type: 2}
+  - {fileID: 11400000, guid: 2f8e450468a4e404d8bd34a36949f78c, type: 2}
+  - {fileID: 11400000, guid: 998d87e4ac5c5ac4dbbf14c2a767fc7b, type: 2}
+  - {fileID: 11400000, guid: db32af4d68f8a9f4b8bccab2049c6b1d, type: 2}
 --- !u!4 &1978410593
 Transform:
   m_ObjectHideFlags: 0
@@ -8713,6 +8878,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c5da6a2d55c8124c8fd658e90b13436, type: 3}
+--- !u!1 &2079911531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6326131799040771274, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+  m_PrefabInstance: {fileID: 1956220461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2094718250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9083,6 +9253,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1003900063}
     - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: levelTextGO
+      value: 
+      objectReference: {fileID: 1832806427}
+    - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
+      propertyPath: cropProgress
+      value: 
+      objectReference: {fileID: 1559626010}
+    - target: {fileID: 9177454486457650593, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
       propertyPath: itemCostText
       value: 
       objectReference: {fileID: 2112906583}
@@ -9128,7 +9306,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8050873089937209650, guid: 3b891ad3a9d2aba469ae3e8671e119e8, type: 3}
   m_PrefabInstance: {fileID: 2112906581}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1832806427}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -9655,6 +9833,12 @@ MonoBehaviour:
   NotPlantedPlot: {fileID: 245291841}
   GrowingPlot: {fileID: 4366736187288774050}
   ReadyToHarvestPlot: {fileID: 9062541532245717413}
+  SeedPlot: {fileID: 0}
+  GrassHarvestPlot: {fileID: 0}
+  LettuceGrowingPlot: {fileID: 0}
+  LettuceHarvestPlot: {fileID: 0}
+  TomatoGrowingPlot: {fileID: 0}
+  TomatoHarvestPlot: {fileID: 0}
   cropProgress: {fileID: 1559626010}
   cropSelectionUI: {fileID: 360340877}
 --- !u!1001 &4949044276729842183
@@ -10009,3 +10193,4 @@ SceneRoots:
   - {fileID: 1164215140}
   - {fileID: 360465184}
   - {fileID: 1880742555}
+  - {fileID: 990388585}

@@ -15,6 +15,7 @@ public class InventorySlot
     {
         this.cropType = cropType;
         this.totalQuantity = quantity;
+        this.currentLevel = 1;
     }
     public void Add(int amount)
     {

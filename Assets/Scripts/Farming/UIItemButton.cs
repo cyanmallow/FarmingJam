@@ -8,29 +8,12 @@ public class UIItemButton : MonoBehaviour
 
     public TMP_Text itemLevelText;
     public GameObject lockIcon;
-
-    //public List<InventorySlot> inventory = new List<InventorySlot>();
-    //public InventoryManager inventoryManager;
     public CropProgress cropProgress;
     public CropType thisButtonCropType;
 
-    void Awake()
-    {
-        //inventoryManager = FindObjectOfType<InventoryManager>();
-        //if (inventoryManager == null)
-        //{
-        //    Debug.Log("CropProgress could not find InventoryManager!");
-        //}
+    public GameObject levelTextGO;
+    public InventoryManager inventoryManager;
 
-        cropProgress = FindObjectOfType<CropProgress>();
-
-        if (cropProgress == null)
-        {
-            Debug.Log("InventoryManager could not find cropProgress!");
-        }
-
-
-    }
     private void OnEnable()
     {
         if (cropProgress.IsCropUnlocked(thisButtonCropType))
@@ -38,12 +21,24 @@ public class UIItemButton : MonoBehaviour
         else
             lockIcon.SetActive(true);
 
+        Refresh();
+
     }
 
+    public void Refresh()
+    {
+        // update the level
+        if (inventoryManager.GetInventorySlot(thisButtonCropType) == null)
+            levelTextGO.GetComponent<TMP_Text>().text = "";
+        else
+            levelTextGO.GetComponent<TMP_Text>().text = "Level " + inventoryManager.GetInventorySlot(thisButtonCropType).currentLevel.ToString();
+    }
 
     // on click, run farmingManager.PlantCrop with the selected crop type
     public void OnClick(CropType cropType)
     {
+        Refresh();
+
         if (cropProgress.IsCropUnlocked(cropType)){
             CropSelectionUI.Instance.activeFarmingManager.PlantCrop(cropType);
             CropSelectionUI.Instance.activeFarmingManager.cropSelectionUI.SetActive(false);
@@ -52,7 +47,6 @@ public class UIItemButton : MonoBehaviour
         else
         {
             Debug.Log("Crop type " + cropType.cropName + " is locked and cannot be planted.");
-
         }
     }
 
