@@ -16,4 +16,7 @@ MonoBehaviour:
   cost: 0
   GrowthTime: 1
   price: 1
+  seedPrefab: {fileID: 7946623610219447868, guid: bd297700bcc3f254aa3bead45dc76db0, type: 3}
+  growingPrefab: {fileID: 7946623610219447868, guid: bd297700bcc3f254aa3bead45dc76db0, type: 3}
+  harvestPrefab: {fileID: 8418766091183685579, guid: 790b0655485b7dd4a8ff3a9ee6765a67, type: 3}
   amountGainedPerHarvested: 2

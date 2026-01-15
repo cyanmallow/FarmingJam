@@ -15,5 +15,8 @@ MonoBehaviour:
   cropName: Eggplant
   cost: 15
   GrowthTime: 4
-  price: 10
-  amountGainedPerHarvested: 2
+  price: 9
+  seedPrefab: {fileID: 0}
+  growingPrefab: {fileID: 0}
+  harvestPrefab: {fileID: 0}
+  amountGainedPerHarvested: 3

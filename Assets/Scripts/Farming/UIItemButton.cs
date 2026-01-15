@@ -7,9 +7,11 @@ public class UIItemButton : MonoBehaviour
 {
 
     public TMP_Text itemLevelText;
-    public GameObject lockIcon;
     public CropProgress cropProgress;
     public CropType thisButtonCropType;
+
+    public GameObject lockIcon;
+    public GameObject requirementsGO;
 
     public GameObject levelTextGO;
     public InventoryManager inventoryManager;
@@ -17,9 +19,16 @@ public class UIItemButton : MonoBehaviour
     private void OnEnable()
     {
         if (cropProgress.IsCropUnlocked(thisButtonCropType))
+        {
             lockIcon.SetActive(false);
+            requirementsGO.SetActive(false);
+        }
         else
+        {
             lockIcon.SetActive(true);
+            requirementsGO.SetActive(true);
+        }
+            
 
         Refresh();
 

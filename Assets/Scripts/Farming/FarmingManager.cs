@@ -16,12 +16,6 @@ public class FarmingManager : MonoBehaviour
     [SerializeField] private GameObject GrowingPlot;
     [SerializeField] private GameObject ReadyToHarvestPlot;
 
-    [SerializeField] private GameObject SeedPlot;
-    [SerializeField] private GameObject GrassHarvestPlot;
-    [SerializeField] private GameObject LettuceGrowingPlot;
-    [SerializeField] private GameObject LettuceHarvestPlot;
-    [SerializeField] private GameObject TomatoGrowingPlot;
-    [SerializeField] private GameObject TomatoHarvestPlot;
 
 
     public CropProgress cropProgress;

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e965afebb70a834daa158c7dd2b127a, type: 3}
-  m_Name: Lettuce
+  m_Name: Pepper
   m_EditorClassIdentifier: Assembly-CSharp::CropType
-  cropName: Lettuce
-  cost: 5
-  GrowthTime: 2
-  price: 3
+  cropName: Pepper
+  cost: 12
+  GrowthTime: 4
+  price: 8
   seedPrefab: {fileID: 0}
-  growingPrefab: {fileID: 2670257156953551628, guid: 6ecd28539ae5c7547b6153322d9f4f10, type: 3}
+  growingPrefab: {fileID: 0}
   harvestPrefab: {fileID: 0}
   amountGainedPerHarvested: 3
