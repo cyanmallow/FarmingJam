@@ -20,6 +20,12 @@ public class InventorySlot
     public void Add(int amount)
     {
         totalQuantity += amount;
+    }
 
+    public void Remove(int amount)
+    {
+        totalQuantity -= amount;
+        if (totalQuantity < 0)
+            totalQuantity = 0;
     }
 }

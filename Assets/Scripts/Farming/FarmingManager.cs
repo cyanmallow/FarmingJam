@@ -22,6 +22,7 @@ public class FarmingManager : MonoBehaviour
 
     // choose crop to plant
     public GameObject cropSelectionUI;
+    public PauseGame pauseGame;
 
     public void Start()
     {
@@ -31,6 +32,12 @@ public class FarmingManager : MonoBehaviour
         if (cropProgress == null)
         {
             Debug.Log("InventoryManager could not find cropProgress!");
+        }
+
+        pauseGame = FindObjectOfType<PauseGame>();
+        if (pauseGame == null)
+        {
+            Debug.Log("FarmingManager could not find PauseGame!");
         }
     }
     public void Interact()
@@ -56,10 +63,10 @@ public class FarmingManager : MonoBehaviour
     public void ChooseCrop()
     {
         cropSelectionUI.SetActive(true);
-
+        
         CropSelectionUI.Instance.activeFarmingManager = this;
         Debug.Log("CropSelectionUI.Instance = " + CropSelectionUI.Instance);
-
+        pauseGame.Pause();
     }
 
     public void PlantCrop(CropType cropType)
@@ -73,6 +80,7 @@ public class FarmingManager : MonoBehaviour
 
         // minus crop cost from player inventory
         inventoryManager.DeductCoins();
+        pauseGame.Resume();
     }
 
     public void AdvanceGrowth()

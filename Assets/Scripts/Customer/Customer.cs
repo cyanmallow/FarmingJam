@@ -4,8 +4,8 @@ using UnityEngine;
 public class Customer : ScriptableObject
 {
     public string customerName;
-    public GameObject prefab;
+    public GameObject designPrefab;
     public int budget;
-    public Item favouriteItem;
+    public CropType favouriteItem;
     public float trust;
 }

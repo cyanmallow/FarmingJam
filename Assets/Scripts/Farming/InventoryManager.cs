@@ -57,6 +57,11 @@ public class InventoryManager : MonoBehaviour
         Debug.Log($"Deducted {farmingManager.currentCropType.cost} coins. Remaining coins: {coin}");
     } 
 
+    public void AddCoin(int amount)
+    {
+        coin += amount;
+    }
+
     public InventorySlot GetInventorySlot(CropType cropType)
     {
         if (cropType == null)
@@ -67,7 +72,6 @@ public class InventoryManager : MonoBehaviour
         return inventory.Find(s => s.cropType == cropType);
     }
 
-    // add item
     public void AddCrop(CropType cropType)
     {
         InventorySlot slot = GetInventorySlot(cropType);
@@ -90,7 +94,23 @@ public class InventoryManager : MonoBehaviour
             Debug.Log($"Inventory has " + cropType.amountGainedPerHarvested + " " + cropType.cropName);
         }
     }
+    public void RemoveCrop(CropType cropType, int quantity)
+    {
+        InventorySlot slot = GetInventorySlot(cropType);
+        if (cropType == null)
+        {
+            Debug.LogError("RemoveCrop called with NULL cropType!");
+            return;
+        }
 
-    // TODO: remove item
-
+        if (slot != null)
+        {
+            slot.Remove(quantity);
+            Debug.Log($"Inventory has " + slot.totalQuantity + " " + cropType.cropName);
+        }
+        else
+        {
+            Debug.Log("None of this item to remove");
+        }
+    }
 }

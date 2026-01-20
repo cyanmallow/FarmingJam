@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManagerSpawner : MonoBehaviour
 {
-    public GameObject entityToSpawn;
+    public GameObject[] entityToSpawn;
     public SpawnManagerScriptableObject spawnManagerData;
     private int instanceNumber = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,19 +17,23 @@ public class SpawnManagerSpawner : MonoBehaviour
     {
         int currentSpawnPointIndex = 0;
 
-        for (int i = 0; i < spawnManagerData.numberOfPrefabs; i++)
+        foreach (GameObject passerby in entityToSpawn)
         {
-            // spawn one entity at the current spawn point
-            GameObject currentEntity = Instantiate(entityToSpawn, spawnManagerData.spawnPoints[currentSpawnPointIndex], Quaternion.identity);
-            // set the name of the spawned entity
-            currentEntity.name = spawnManagerData.prefabName + instanceNumber;
-            // move to the next spawn point
-            currentSpawnPointIndex = (currentSpawnPointIndex + 1) % spawnManagerData.spawnPoints.Length;
-            instanceNumber++;
-            
-            // wait for 3 seconds before spawning the next entity
-            StartCoroutine(WaitFor3Seconds());
+            for (int i = 0; i < spawnManagerData.numberOfPrefabs; i++)
+            {
+                // spawn one entity at the current spawn point
+                GameObject currentEntity = Instantiate(passerby, spawnManagerData.spawnPoints[currentSpawnPointIndex], Quaternion.identity);
+                // set the name of the spawned entity
+                currentEntity.name = spawnManagerData.prefabName + instanceNumber;
+                // move to the next spawn point
+                currentSpawnPointIndex = (currentSpawnPointIndex + 1) % spawnManagerData.spawnPoints.Length;
+                instanceNumber++;
+
+                // wait for 3 seconds before spawning the next entity
+                StartCoroutine(WaitFor3Seconds());
+            }
         }
+        
     }
 
     IEnumerator WaitFor3Seconds()

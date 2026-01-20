@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6722c871cb1ff93409e50c338292b290, type: 3}
-  m_Name: Customer1
+  m_Name: PumpCustomer
   m_EditorClassIdentifier: Assembly-CSharp::Customer
-  customerName: Customer1
+  customerName: PumpCustomer
+  designPrefab: {fileID: 9082570061865631823, guid: 9823c65d21f5fb04a9abcab1d358e2ed, type: 3}
   budget: 10
-  favouriteItem: {fileID: 0}
+  favouriteItem: {fileID: 11400000, guid: 1f55337721d441f4295815178a23ce4a, type: 2}
   trust: 0
