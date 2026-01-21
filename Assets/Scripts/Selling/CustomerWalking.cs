@@ -18,20 +18,19 @@ public class CustomerWalking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-        {
-            Walk();
+        if (agent.pathPending) return;
 
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+            {
+                WalkToNextPoint();
+            }
         }
     }
 
-    private void Walk()
+    private void WalkToNextPoint()
     {
-        if (agent.pathPending)
-        {
-            return;
-        }
-
         if (agent.remainingDistance > agent.stoppingDistance)
         {
             return;

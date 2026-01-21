@@ -18,8 +18,6 @@ public class LightingManager : MonoBehaviour
             return;
         }
 
-
-
         if (Application.isPlaying)
         {
             TimeOfDay += Time.deltaTime / 240f;

@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CropType
   cropName: Tomato
   cost: 10
-  GrowthTime: 5
+  GrowthTime: 4
   price: 3
+  seedPrefab: {fileID: 0}
+  growingPrefab: {fileID: 0}
+  harvestPrefab: {fileID: 0}
   amountGainedPerHarvested: 6
