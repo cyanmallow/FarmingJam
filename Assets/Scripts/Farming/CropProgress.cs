@@ -18,6 +18,8 @@ public class CropProgress : MonoBehaviour
     public CropType cabbage;
     public CropType pepper;
     public CropType eggplant;
+    public CropType pumpkin;
+
 
     public void Start()
     {
@@ -98,6 +100,12 @@ public class CropProgress : MonoBehaviour
         {
             InventorySlot pepperSlot = inventoryManager.GetInventorySlot(pepper);
             if (pepperSlot != null && pepperSlot.currentLevel >= 2)
+                return true;
+        }
+        if (cropType == pumpkin)
+        {
+            InventorySlot eggplantSlot = inventoryManager.GetInventorySlot(eggplant);
+            if (eggplantSlot != null && eggplantSlot.currentLevel >= 2)
                 return true;
         }
         return false;
