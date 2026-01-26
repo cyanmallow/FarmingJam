@@ -12,8 +12,9 @@ public class UIItemButton : MonoBehaviour
 
     public GameObject lockIcon;
     public GameObject requirementsGO;
+    [SerializeField] private GameObject growthTimeGO;
 
-    public GameObject levelTextGO;
+    [SerializeField] private GameObject levelTextGO;
     public InventoryManager inventoryManager;
 
     private void OnEnable()
@@ -22,11 +23,15 @@ public class UIItemButton : MonoBehaviour
         {
             lockIcon.SetActive(false);
             requirementsGO.SetActive(false);
+            growthTimeGO.SetActive(true);
+            levelTextGO.SetActive(true);
         }
         else
         {
             lockIcon.SetActive(true);
             requirementsGO.SetActive(true);
+            growthTimeGO.SetActive(false);
+            levelTextGO.SetActive(false);
         }
             
 

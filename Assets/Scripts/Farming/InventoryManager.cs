@@ -17,6 +17,9 @@ public class InventoryManager : MonoBehaviour
 
     public List<CropType> CropDatabase;
 
+    [SerializeField] private Transform contentParent;
+    [SerializeField] private GameObject buttonPrefab;
+
 
     private void Awake()
     {
@@ -111,6 +114,29 @@ public class InventoryManager : MonoBehaviour
         else
         {
             Debug.Log("None of this item to remove");
+        }
+    }
+
+    // list things in inventory
+    public void ListInventoryItems()
+    {
+        // code to list items in inventory
+        foreach (CropType cropType in CropDatabase)
+        {
+            InventorySlot slot = GetInventorySlot(cropType);
+            Debug.Log("Inventory has " + slot.totalQuantity + " " + cropType.cropName);
+
+            if (slot.totalQuantity <= 0)
+                continue;
+
+            // Create UI button
+            GameObject buttonGO = Instantiate(buttonPrefab, contentParent);
+
+            // Get your custom button script
+            DisplayItems button = buttonGO.GetComponent<DisplayItems>();
+
+            // Fill data
+            button.UpdateButtonContent(cropType, slot.totalQuantity);
         }
     }
 }

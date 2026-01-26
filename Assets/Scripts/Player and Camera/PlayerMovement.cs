@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     public NPCInteractable currentNPC;
     private FarmingManager currentFarmingTile;
+    private SellingManger currentCrate;
 
     private void Awake()
     {
@@ -55,6 +56,12 @@ public class PlayerMovement : MonoBehaviour
         {
             currentFarmingTile.Interact();
         }
+
+        // if next to a selling crate
+        if (currentCrate != null)
+        {
+            currentCrate.Interact();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,6 +70,12 @@ public class PlayerMovement : MonoBehaviour
         if (other.TryGetComponent(out FarmingManager tile))
         {
             currentFarmingTile = tile;
+        }
+
+        // Selling crate
+        if (other.TryGetComponent(out SellingManger crate))
+        {
+            currentCrate = crate;
         }
     }
 
@@ -73,6 +86,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if (currentFarmingTile == tile)
                 currentFarmingTile = null;
+        }
+
+        // Selling crate
+        if (other.TryGetComponent(out SellingManger crate))
+        {
+            if (currentCrate == crate)
+                currentCrate = null;
         }
     }
 
